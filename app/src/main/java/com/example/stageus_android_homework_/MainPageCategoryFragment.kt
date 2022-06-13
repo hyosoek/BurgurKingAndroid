@@ -9,9 +9,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.byoapplication.ZProductDB
+import com.example.byoapplication.ProductDB
 
-class FragmentCategory(index : Int):Fragment() {
+class MainPageCategoryFragment(index : Int):Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +24,7 @@ class FragmentCategory(index : Int):Fragment() {
     }
     fun createView(view: View){
         val layout = view.findViewById<LinearLayout>(R.id.parent_layout)
-        val productDB = ZProductDB()
+        val productDB = ProductDB()
         for (i in 0 until productDB.productArray[0].size) {
             productDB.productArray[0][i][0]
             val layoutInflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -42,33 +42,7 @@ class FragmentCategory(index : Int):Fragment() {
 
             layout.addView(customView)
     }
-//    fun createView(view: View){//index를 어떻게 받아오는가?
-//        val layout = view.findViewById<LinearLayout>(R.id.parent_layout)
-//        val productDB = ZProductDB()
-//        for (i in 0 until productDB.productArray[0].size) {
-//            productDB.productArray[0][i][0]
-//            val layoutInflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//            val customView = layoutInflater.inflate(R.layout.custom_view_category, null)
-//            val imageView = customView.findViewById<ImageView>(R.id.symbol)
-//            val text1View = customView.findViewById<TextView>(R.id.text1)
-//            text1View.text = productDB.productArray[0][i][0]
-//            val text2View = customView.findViewById<TextView>(R.id.text2)
-//            text2View.text = productDB.productArray[0][i][1] + "원"
-//
-//            if (productDB.productArray[0][i][0] == "와퍼"){imageView.setImageResource(R.mipmap.whopper)}
-//            else if(productDB.productArray[0][i][0] == "치즈와퍼") {imageView.setImageResource(R.mipmap.cheesewhopper)}
-//            else if (productDB.productArray[0][i][0] == "불고기와퍼"){imageView.setImageResource(R.mipmap.bulgogiwhopper)}
-//            else if (productDB.productArray[0][i][0] == "새우와퍼"){imageView.setImageResource(R.mipmap.shrimpwhopper)}
-//
-//            layout.addView(customView)
-//            val inCartButton = customView.findViewById<ConstraintLayout>(R.id.bg)
-//            inCartButton.setOnClickListener {
-//                val intent = Intent(context, ActivityIncartProduct::class.java)
-//                startActivity(intent)
-//            }
-//        }
-//
-//    }
+
 
 }}
 

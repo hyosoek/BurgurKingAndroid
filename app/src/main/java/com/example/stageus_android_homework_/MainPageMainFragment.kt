@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 
-class FragmentMain:Fragment() {
+class MainPageMainFragment:Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,18 +37,26 @@ class FragmentMain:Fragment() {
 
         val cartButton = view.findViewById<Button>(R.id.cartBtn)
         cartButton.setOnClickListener {
-            val fragmentTemp = FragmentCart()
+            val fragmentTemp = MainPageCartFragment()
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentBox, fragmentTemp)?.commit()
         }
+
         val payButton = view.findViewById<Button>(R.id.payBtn)
         payButton.setOnClickListener {
-            val fragmentTemp = FragmentPay()
+            val fragmentTemp = MainPagePaymentOptionFragment()
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentBox, fragmentTemp)?.commit()
         }
+
+        val backBtn = view.findViewById<Button>(R.id.backBtn)
+        backBtn.setOnClickListener {
+            activity?.finish()
+        }
     }
+
     fun categoryEvent(index : Int){
-        val fragmentTemp = FragmentCategory(index)
+        val fragmentTemp = MainPageCategoryFragment(index)
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentBox, fragmentTemp)?.commit()
     }
+
 
 }

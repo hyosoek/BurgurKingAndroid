@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Stageus_android_homework_">
         <activity
-            android:name=".ActivityInitPage"
+            android:name=".InitPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InitPageActivity"/>
-        <activity android:name=".ActivityPayWithCash"/>
-        <activity android:name=".ActivityIncartProduct"/>
+        <activity android:name=".MainPageActivity"/>
+
     </application>
 
 </manifest>

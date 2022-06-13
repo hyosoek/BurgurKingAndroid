@@ -1,6 +1,6 @@
 package com.example.byoapplication
 
-class ZProductDB {
+class ProductDB {
 
     var burgerArrary = arrayOf(arrayOf("와퍼", "4500"),
         arrayOf("치즈와퍼", "5000"),
