@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.3888888888888889" />
+        <entry key="app/src/main/res/drawable/additional_btn_design1.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/additional_btn_design2.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/black_round.xml" value="0.391" />
+        <entry key="app/src/main/res/drawable/btn_color_black.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/btn_color_orange.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/btn_color_red.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/btn_color_yellow.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/btn_design1.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/btn_design2.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/btn_design3.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/btn_design4.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/orange_round.xml" value="0.391" />
+        <entry key="app/src/main/res/drawable/radius_side.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/red_round.xml" value="0.391" />
+        <entry key="app/src/main/res/drawable/white_round.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/yellow_default.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/yellow_round.xml" value="0.391" />
+        <entry key="app/src/main/res/drawable/yellow_shadow.xml" value="0.148" />
+        <entry key="app/src/main/res/font/burger_king_font.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21613311767578128" />
+        <entry key="app/src/main/res/layout/cart_page.xml" value="0.35069580078125007" />
+        <entry key="app/src/main/res/layout/cart_page_fragment.xml" value="0.29960327148437504" />
+        <entry key="app/src/main/res/layout/category_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/combo_menu.xml" value="0.41342010498046877" />
+        <entry key="app/src/main/res/layout/combo_menu_fragment.xml" value="0.35375365493337324" />
+        <entry key="app/src/main/res/layout/custom_layout_lecture.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/custom_view_category.xml" value="0.21933857435444168" />
+        <entry key="app/src/main/res/layout/incart_message_box.xml" value="0.2676284790039062" />
+        <entry key="app/src/main/res/layout/init_page.xml" value="0.34675140380859376" />
+        <entry key="app/src/main/res/layout/logo_backbtn_fragment.xml" value="0.28648070571462325" />
+        <entry key="app/src/main/res/layout/main_category_customview.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layout/main_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/main_page2_none_use.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/main_page_2nd_ver.xml" value="0.37674560546875" />
+        <entry key="app/src/main/res/layout/main_page_fragment.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/menu_burger_fragment.xml" value="0.2767843832771918" />
+        <entry key="app/src/main/res/layout/menu_burger_page.xml" value="0.2321504916631039" />
+        <entry key="app/src/main/res/layout/menu_combo_page.xml" value="0.49603424072265634" />
+        <entry key="app/src/main/res/layout/menu_comboburger_page.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/menu_drink_page.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/menu_drink_page_fragment.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/menu_select_page.xml" value="0.21571350097656253" />
+        <entry key="app/src/main/res/layout/menu_side_page.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/menu_side_page_fragment.xml" value="0.26113585708181075" />
+        <entry key="app/src/main/res/layout/menu_to_cart_ask.xml" value="0.19921417236328132" />
+        <entry key="app/src/main/res/layout/none_use_main.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/option_drink.xml" value="0.2321504916631039" />
+        <entry key="app/src/main/res/layout/option_side.xml" value="0.2321504916631039" />
+        <entry key="app/src/main/res/layout/payment_card_page.xml" value="0.2873587240975043" />
+        <entry key="app/src/main/res/layout/payment_card_page_fragment.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/payment_cash_page.xml" value="0.19573974609375" />
+        <entry key="app/src/main/res/layout/payment_choice_page_fragment.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/payment_end.xml" value="0.32283805269826016" />
+        <entry key="app/src/main/res/layout/payment_page.xml" value="0.2617706298828125" />
+        <entry key="app/src/main/res/layout/receipt.xml" value="0.2321504916631039" />
+        <entry key="app/src/main/res/layout/warn_no_cart_message_box.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/cashpay_payment_page.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/init_page.xml" value="0.26425476074218757" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/page_cash_payment.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/page_init.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/page_payment_end.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/payment_cash_page.xml" value="0.2543822146216332" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/payment_end.xml" value="0.2543822146216332" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/paymentend_show_page.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/receipt.xml" value="0.2543822146216332" />
+        <entry key="app/src/main/res/layouts/atomic_folder/layout/receipt_show_page.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/cart_page_fragment.xml" value="0.3345421577515866" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/cardpay_payment_page.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/cart_page_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/combo_menu_fragment.xml" value="0.23234710693359378" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/fragment_card_payment.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/fragment_cart_page.xml" value="0.21713978285053542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/fragment_category.xml" value="0.32558441162109375" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/fragment_main.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/fragment_pay_option.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/logo_backbtn_fragment.xml" value="0.22677764174977952" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/main_cart_fragment.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/main_category_fragment.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/main_common_page.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/main_fragment.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/main_page_fragment.xml" value="0.2743789601091545" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/main_payoption_fragment.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/menu_burger_fragment.xml" value="0.24661711928884203" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/menu_drink_page_fragment.xml" value="0.2743621754411858" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/menu_side_page_fragment.xml" value="0.151951591945092" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/page_default_with_logo_backBtn.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/page_default_with_logo_backbtn.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/payment_card_fragment.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/payment_card_page_fragment.xml" value="0.2543822146216332" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/payment_choice_page_fragment.xml" value="0.2543822146216332" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/z_trash_burger.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/fragment_folder/layout/z_trash_drink.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/window_folder/layout/incart_message_box.xml" value="0.27864226577321705" />
+        <entry key="app/src/main/res/layouts/window_folder/layout/option_drink.xml" value="0.33640888698491445" />
+        <entry key="app/src/main/res/layouts/window_folder/layout/option_side.xml" value="0.3844360279802483" />
+        <entry key="app/src/main/res/layouts/window_folder/layout/page_incart_message_box.xml" value="0.25908507909362977" />
+        <entry key="app/src/main/res/layouts/window_folder/layout/page_option.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layouts/window_folder/layout/z_trash_option_side.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.319" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

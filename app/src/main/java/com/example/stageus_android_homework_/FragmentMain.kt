@@ -1,0 +1,54 @@
+package com.example.stageus_android_homework_
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.Fragment
+
+class FragmentMain:Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.main_main_fragment, container, false)
+        mainEvent(view)
+        return view
+    }
+    fun mainEvent(view: View){
+        val comboCategoryBtn = view.findViewById<Button>(R.id.comboCategory)
+        comboCategoryBtn.setOnClickListener {
+            categoryEvent(1)
+        }
+        val burgerCategoryBtn = view.findViewById<Button>(R.id.burgerCategory)
+        burgerCategoryBtn.setOnClickListener {
+            categoryEvent(2)
+        }
+        val drinkCategoryBtn = view.findViewById<Button>(R.id.drinkCategory)
+        drinkCategoryBtn.setOnClickListener {
+            categoryEvent(3)
+        }
+        val sideCategoryBtn = view.findViewById<Button>(R.id.sideCategory)
+        sideCategoryBtn.setOnClickListener {
+            categoryEvent(4)
+        }
+
+        val cartButton = view.findViewById<Button>(R.id.cartBtn)
+        cartButton.setOnClickListener {
+            val fragmentTemp = FragmentCart()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentBox, fragmentTemp)?.commit()
+        }
+        val payButton = view.findViewById<Button>(R.id.payBtn)
+        payButton.setOnClickListener {
+            val fragmentTemp = FragmentPay()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentBox, fragmentTemp)?.commit()
+        }
+    }
+    fun categoryEvent(index : Int){
+        val fragmentTemp = FragmentCategory(index)
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentBox, fragmentTemp)?.commit()
+    }
+
+}
