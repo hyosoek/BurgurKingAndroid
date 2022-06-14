@@ -42,7 +42,7 @@
 
 
         <Button
-            android:id="@+id/cash_pay_button"
+            android:id="@+id/cashPayBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -53,7 +53,7 @@
             android:textSize="25dp"/>
 
         <Button
-            android:id="@+id/card_pay_button"
+            android:id="@+id/cardPayBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -65,7 +65,7 @@
 
     </LinearLayout>
     <Button
-        android:id="@+id/backbtn"
+        android:id="@+id/backBtn"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.25"
         android:layout_height="wrap_content"

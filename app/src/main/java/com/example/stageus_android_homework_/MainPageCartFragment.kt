@@ -21,10 +21,9 @@ class MainPageCartFragment:Fragment() {
     }
     fun initEvent(view:View){
         val backBtn = view.findViewById<Button>(R.id.backBtn)
-        val changeInterface = context as ChangeFragment
         backBtn.setOnClickListener{
+            val changeInterface = context as ChangeFragment
             changeInterface.changeFragment(1)
         }
-
     }
 }

@@ -16,23 +16,28 @@ class MainPagePaymentOptionFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.main_payoption_fragment, container, false)
-        payEvent(view)
+        initEvent(view)
         return view
     }
-    fun payEvent(view: View){
-        val cashPayButton = view.findViewById<Button>(R.id.cash_pay_button)
-        cashPayButton.setOnClickListener {
-            val intent = Intent(context, CashPaymentPage::class.java)
-            startActivity(intent)
-            }
-
-        val cardPayButton = view.findViewById<Button>(R.id.card_pay_button)
-        cardPayButton.setOnClickListener {
-            val fragmentTemp = CardPaymentPage()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentBox, fragmentTemp)?.commit()
+    fun initEvent(view: View){
+        val backBtn = view.findViewById<Button>(R.id.backBtn)
+        backBtn.setOnClickListener{
+            val changeInterface = context as ChangeFragment
+            changeInterface.changeFragment(1)
         }
-
+        val cashPayButton = view.findViewById<Button>(R.id.cashPayBtn)
+        cashPayButton.setOnClickListener {
+            val intent = Intent(context, CashPaymentPageActivity::class.java)
+            startActivity(intent)
+        }
+        val cardPayButton = view.findViewById<Button>(R.id.cardPayBtn)
+        cardPayButton.setOnClickListener {
+            val intent = Intent(context, CardPaymentPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-
 }
+
+
+

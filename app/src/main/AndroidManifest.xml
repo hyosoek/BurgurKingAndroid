@@ -19,6 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainPageActivity"/>
+        <activity android:name=".CashPaymentPageActivity"/>
+        <activity android:name=".CardPaymentPageActivity"/>
+        <activity android:name=".PaymentEndPageActivity"/>
+        <activity android:name=".RecieptPageActivity"/>
 
     </application>
 
