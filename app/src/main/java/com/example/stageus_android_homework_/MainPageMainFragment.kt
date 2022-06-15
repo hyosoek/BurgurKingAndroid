@@ -16,12 +16,12 @@ class MainPageMainFragment:Fragment() {
     fun initEvent(view: View) {
         val cartButton = view.findViewById<Button>(R.id.cartBtn)
         cartButton.setOnClickListener {
-            val changeInterface = context as ChangeFragment
+            val changeInterface = context as MainInterface
             changeInterface.changeFragment(2)
         }
         val payButton = view.findViewById<Button>(R.id.payBtn)
         payButton.setOnClickListener {
-            val changeInterface = context as ChangeFragment
+            val changeInterface = context as MainInterface
             changeInterface.changeFragment(3)
         }
         val backBtn = view.findViewById<Button>(R.id.backBtn)
@@ -30,22 +30,22 @@ class MainPageMainFragment:Fragment() {
         }
         val comboCategoryBtn = view.findViewById<Button>(R.id.comboCategory)
         comboCategoryBtn.setOnClickListener {
-            val changeInterface = context as ChangeFragment
+            val changeInterface = context as MainInterface
             changeInterface.changeFragment(4)
         }
         val burgerCategoryBtn = view.findViewById<Button>(R.id.burgerCategory)
         burgerCategoryBtn.setOnClickListener {
-            val changeInterface = context as ChangeFragment
+            val changeInterface = context as MainInterface
             changeInterface.changeFragment(5)
         }
         val drinkCategoryBtn = view.findViewById<Button>(R.id.drinkCategory)
         drinkCategoryBtn.setOnClickListener {
-            val changeInterface = context as ChangeFragment
+            val changeInterface = context as MainInterface
             changeInterface.changeFragment(6)
         }
         val sideCategoryBtn = view.findViewById<Button>(R.id.sideCategory)
         sideCategoryBtn.setOnClickListener {
-            val changeInterface = context as ChangeFragment
+            val changeInterface = context as MainInterface
             changeInterface.changeFragment(7)
         }
 

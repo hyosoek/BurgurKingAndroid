@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.SurfaceControl
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -12,10 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import com.example.byoapplication.ProductDB
-import kotlin.concurrent.fixedRateTimer
 
 class MainPageCategoryFragment():Fragment() {
     var idValue = ""
@@ -34,7 +30,7 @@ class MainPageCategoryFragment():Fragment() {
     fun initEvent(view: View){
         val backBtn = view.findViewById<Button>(R.id.backBtn)
         backBtn.setOnClickListener{
-            val changeInterface = context as ChangeFragment
+            val changeInterface = context as MainInterface
             changeInterface.changeFragment(1)
         }
     }
@@ -51,8 +47,6 @@ class MainPageCategoryFragment():Fragment() {
                 text1View.text = productDB.productArray[0][i][0] + " 세트"
                 val text2View = customView.findViewById<TextView>(R.id.text2)
                 text2View.text = (productDB.productArray[0][i][1].toInt()+2000).toString() + "원"
-                Log.d("result_message","받아온 정보 ${productDB.productArray[0][i][0]}")
-                imageView.setImageResource(R.mipmap.whopper)
 
                 when (productDB.productArray[0][i][0]) {
                     "와퍼" -> imageView.setImageResource(R.mipmap.whopperset)
@@ -61,6 +55,13 @@ class MainPageCategoryFragment():Fragment() {
                     "새우와퍼" -> imageView.setImageResource(R.mipmap.shrimpset)
                 }
                 layout.addView(customView)
+                customView.setOnClickListener {
+                    val changeInterface = context as MainInterface
+                    val product = ProductInCartClass()
+                    product.productName = productDB.productArray[0][i][0] + "세트"
+                    product.productPrice = (productDB.productArray[0][i][1].toInt()+2000).toString()
+                    changeInterface.inCartProduct(product)
+                }
             }
         }
         else{
@@ -86,6 +87,13 @@ class MainPageCategoryFragment():Fragment() {
                     "치즈스틱" -> imageView.setImageResource(R.mipmap.cheesestick)
                 }
                 layout.addView(customView)
+                customView.setOnClickListener {
+                    val changeInterface = context as MainInterface
+                    val product = ProductInCartClass()
+                    product.productName = productDB.productArray[index-5][i][0]
+                    product.productPrice = productDB.productArray[index-5][i][1]
+                    changeInterface.inCartProduct(product)
+                }
             }
         }
     }

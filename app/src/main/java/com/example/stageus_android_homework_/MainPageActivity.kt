@@ -1,13 +1,17 @@
 package com.example.stageus_android_homework_
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
-interface ChangeFragment{
+interface MainInterface{
     fun changeFragment(fragmentNum : Int)
+    fun inCartProduct(product : ProductInCartClass)
+    fun delCartProduct(index : Int)
 }
 
-class MainPageActivity : AppCompatActivity() ,ChangeFragment{
+class MainPageActivity : AppCompatActivity() ,MainInterface{
+    val cart = CartClass()
     override fun changeFragment(fragmentNum : Int) {
         if (fragmentNum == 0) {
             finish()
@@ -19,11 +23,20 @@ class MainPageActivity : AppCompatActivity() ,ChangeFragment{
         }
         else if(fragmentNum == 2) { //cart
             val fragmentTemp = MainPageCartFragment()//파일명을 가져와야함.
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp).commit()
+            val bundle = Bundle()
+            bundle.putSerializable("Cart",cart)
+            fragmentTemp.arguments = bundle //이 프래그먼트의 아규먼트로 보내는 겁니다.
+            val fragmentTemp1 = fragmentTemp//파일명을 가져와야함.
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp1).commit()//가져온 프래그먼트를 붙여줍니다. 첫번째는 위치, 두번째는 물건
+
         }
         else if(fragmentNum == 3) { //payment
             val fragmentTemp = MainPagePaymentOptionFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp).commit()
+            val bundle = Bundle()
+            bundle.putSerializable("Cart",cart)
+            fragmentTemp.arguments = bundle //이 프래그먼트의 아규먼트로 보내는 겁니다.
+            val fragmentTemp1 = fragmentTemp//파일명을 가져와야함.
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp1).commit()
         }
         else {
             val fragmentTemp = MainPageCategoryFragment()//파일명을 가져와야함.
@@ -33,12 +46,19 @@ class MainPageActivity : AppCompatActivity() ,ChangeFragment{
             supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp).commit()
         }
     }
+    override fun inCartProduct(product: ProductInCartClass) {
+        cart.addCart(product)
+    }
+    override fun delCartProduct(index: Int) {
+        cart.editCart(index)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_common_page)
         val fragmentTemp = MainPageMainFragment()//파일명을 가져와야함.
         supportFragmentManager.beginTransaction().add(R.id.fragmentBox, fragmentTemp).commit()//가져온 프래그먼트를 붙여줍니다. 첫번째는 위치, 두번째는 물건
+
     }
 
 }

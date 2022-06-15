@@ -1,6 +1,8 @@
 package com.example.stageus_android_homework_
 
-class CartClass {
+import java.io.Serializable
+
+class CartClass:Serializable {
     val cartList = mutableListOf<ProductInCartClass>()
     var priceSum = 0
 

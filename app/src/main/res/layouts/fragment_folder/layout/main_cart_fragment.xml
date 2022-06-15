@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ScrollView
-        android:id="@+id/cartscroll"
+        android:id="@+id/cartScroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/cartList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -42,6 +43,7 @@
             android:textColor="@color/burgerking_brown" />
 
         <TextView
+            android:id="@+id/cartPrice"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="0원"
