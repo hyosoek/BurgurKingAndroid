@@ -9,6 +9,7 @@ class CashPaymentPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cashpay_payment_page)
+        val idValue = intent.getStringExtra("id_value")
         initEvent()
     }
     fun initEvent() {

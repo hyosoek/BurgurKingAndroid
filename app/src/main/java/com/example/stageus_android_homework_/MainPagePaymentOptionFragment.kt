@@ -24,9 +24,10 @@ class MainPagePaymentOptionFragment:Fragment() {
         setPaymentPrice(view)
         return view
     }
+
     fun initEvent(view: View){
         val backBtn = view.findViewById<Button>(R.id.backBtn)
-        backBtn.setOnClickListener{
+        backBtn.setOnClickListener {
             val changeInterface = context as MainInterface
             changeInterface.changeFragment(1)
         }
@@ -34,6 +35,8 @@ class MainPagePaymentOptionFragment:Fragment() {
         cashPayButton.setOnClickListener {
             val intent = Intent(context, CashPaymentPageActivity::class.java)
             startActivity(intent)
+            //        여기서 데이터를 보내줘야 합니다. Data 전송 fragment to Activity
+            intent.putExtra("id_value", cart)
         }
         val cardPayButton = view.findViewById<Button>(R.id.cardPayBtn)
         cardPayButton.setOnClickListener {
