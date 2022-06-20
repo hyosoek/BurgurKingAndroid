@@ -1,9 +1,12 @@
 package com.example.stageus_android_homework_
 
 import android.app.AlertDialog
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 interface MainInterface{
     fun changeFragment(fragmentNum : Int)
@@ -59,13 +62,25 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
     override fun delCartProduct(index: Int) {
         cart.editCart(index)
     }
-
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_common_page)
+
         val fragmentTemp = MainPageMainFragment()//파일명을 가져와야함.
         supportFragmentManager.beginTransaction().add(R.id.fragmentBox, fragmentTemp).commit()//가져온 프래그먼트를 붙여줍니다. 첫번째는 위치, 두번째는 물건
+    }
 
+    override fun onStart() {
+        super.onStart()
+        val intent = Intent(this, MultiService::class.java)
+        stopService(intent)
+    }
+
+//여기 종료하면 실행하기
+    override fun onStop() {
+        super.onStop()
+        val intent = Intent(this, MultiService::class.java)
+        ContextCompat.startForegroundService(this, intent)
     }
 
     fun emptyCartDialog(){//dialog make

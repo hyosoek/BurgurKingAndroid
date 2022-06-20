@@ -19,5 +19,4 @@ class InitPageActivity : AppCompatActivity() {
             startActivity(intentMain)
         }
     }
-
 }
