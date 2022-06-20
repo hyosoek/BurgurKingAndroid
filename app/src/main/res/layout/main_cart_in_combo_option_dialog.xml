@@ -50,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="콜라"
+                android:textSize="18dp"
                 android:background="@drawable/yellow_round">
             </TextView>
 
@@ -80,6 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사이다"
+                android:textSize="18dp"
                 android:background="@drawable/yellow_round">
             </TextView>
 
@@ -109,6 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="환타"
+                android:textSize="18dp"
                 android:background="@drawable/yellow_round">
             </TextView>
 

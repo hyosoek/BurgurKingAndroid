@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/warnText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -47,7 +47,7 @@
                 android:textSize="25dp"
                 />
             <Button
-                android:id="@+id/cartInBtn"
+                android:id="@+id/cartInOutBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

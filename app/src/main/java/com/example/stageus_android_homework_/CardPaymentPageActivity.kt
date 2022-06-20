@@ -30,6 +30,6 @@ class CardPaymentPageActivity: AppCompatActivity() {
     fun setPrice() {
         val price = findViewById<TextView>(R.id.totalPrice)
         cart.priceSum
-        price.text = (cart.priceSum).toString()
+        price.text = (cart.priceSum).toString() + "원"
     }
 }

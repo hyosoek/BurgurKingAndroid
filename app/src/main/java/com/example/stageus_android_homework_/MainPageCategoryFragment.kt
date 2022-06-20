@@ -60,7 +60,7 @@ class MainPageCategoryFragment():Fragment() {
         }
 
     }
-    fun cartInDrinkDialog(productDB: ProductDB,index: Int,index2:Int){
+    fun cartInDrinkDialog(productDB: ProductDB,index: Int,index2:Int){ //커스텀 뷰로 했어야 하나? 아닌거 같다
         val dialogTemp = AlertDialog.Builder(context)
         val dialog = dialogTemp.create()
         val dialogView = layoutInflater.inflate(R.layout.main_cart_in_combo_option_dialog,null)
@@ -87,41 +87,60 @@ class MainPageCategoryFragment():Fragment() {
         val dialogTemp = AlertDialog.Builder(context)
         val dialog = dialogTemp.create()
         val dialogView = layoutInflater.inflate(R.layout.main_cart_in_combo_option_dialog,null)
+        //이부분 리팩토링
+        val imageView1 = dialogView.findViewById<ImageView>(R.id.image1)
+        imageView1.setImageResource(R.mipmap.frenchfri)
+        val textView1 = dialogView.findViewById<TextView>(R.id.text1)
+        textView1.text = "감자튀김"
+
+        val imageView2 = dialogView.findViewById<ImageView>(R.id.image2)
+        imageView2.setImageResource(R.mipmap.onionring)
+        val textView2 = dialogView.findViewById<TextView>(R.id.text2)
+        textView2.text = "어니언링"
+
+        val imageView3 = dialogView.findViewById<ImageView>(R.id.image3)
+        imageView3.setImageResource(R.mipmap.cheesestick)
+        val textView3 = dialogView.findViewById<TextView>(R.id.text3)
+        textView3.text = "치즈스틱"
 
         val option1 = dialogView.findViewById<LinearLayout>(R.id.option1)
         val option2 = dialogView.findViewById<LinearLayout>(R.id.option2)
         val option3 = dialogView.findViewById<LinearLayout>(R.id.option3)
 
         option1.setOnClickListener{
+            cartInComboSuccess(productDB,index,index2,drinkOptionIdx,1)
             dialog.dismiss()
-            cartInSideDialog(productDB, index, index2,1)
         }
         option2.setOnClickListener{
+            cartInComboSuccess(productDB,index,index2,drinkOptionIdx,2)
             dialog.dismiss()
-            cartInSideDialog(productDB, index, index2,2)
         }
         option3.setOnClickListener{
+            cartInComboSuccess(productDB,index,index2,drinkOptionIdx,3)
             dialog.dismiss()
-            cartInSideDialog(productDB, index, index2,3)
         }
+        //여기까지
         dialog.setView(dialogView)
         dialog.show()
     }
 
-    fun cartInComboSuccess(productDB: ProductDB,index: Int,index2:Int,option1:String,option2:String){
+    fun cartInComboSuccess(productDB: ProductDB,index: Int,index2:Int,drinkOptionIdx: Int,sideOptionIdx: Int){
         val changeInterface = context as MainInterface
         val product = ProductInCartClass()
         product.productName = productDB.productArray[index-4][index2][0] as String
         product.productPrice = productDB.productArray[index-4][index2][1] as String
+        product.productImage = productDB.productArray[index-4][index2][2] as Int
+        product.option1 = productDB.productArray[2][drinkOptionIdx-1][0] as String
+        product.option2 = productDB.productArray[3][sideOptionIdx-1][0] as String
         changeInterface.inCartProduct(product)
     }
 
     fun cartInDialog(productDB: ProductDB,index: Int,index2:Int){
         val dialogtemp = AlertDialog.Builder(context)
         val dialog = dialogtemp.create()
-        val dialogView = layoutInflater.inflate(R.layout.main_cart_in_dialog,null)
+        val dialogView = layoutInflater.inflate(R.layout.main_cart_inout_dialog,null)
         val cancelButton = dialogView.findViewById<Button>(R.id.cancelBtn)
-        val cartInButton = dialogView.findViewById<Button>(R.id.cartInBtn)
+        val cartInButton = dialogView.findViewById<Button>(R.id.cartInOutBtn)
         dialog.setView(dialogView)
         cancelButton.setOnClickListener{
             dialog.dismiss()
@@ -138,6 +157,7 @@ class MainPageCategoryFragment():Fragment() {
         val product = ProductInCartClass()
         product.productName = productDB.productArray[index-4][index2][0] as String
         product.productPrice = productDB.productArray[index-4][index2][1] as String
+        product.productImage = productDB.productArray[index-4][index2][2] as Int
         changeInterface.inCartProduct(product)
     }
 }
