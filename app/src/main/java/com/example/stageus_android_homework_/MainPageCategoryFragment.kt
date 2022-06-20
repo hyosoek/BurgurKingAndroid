@@ -61,23 +61,51 @@ class MainPageCategoryFragment():Fragment() {
 
     }
     fun cartInDrinkDialog(productDB: ProductDB,index: Int,index2:Int){
-        val dialogtemp = AlertDialog.Builder(context)
-        val dialog = dialogtemp.create()
+        val dialogTemp = AlertDialog.Builder(context)
+        val dialog = dialogTemp.create()
         val dialogView = layoutInflater.inflate(R.layout.main_cart_in_combo_option_dialog,null)
-        val cancelButton = dialogView.findViewById<Button>(R.id.cancelBtn)
-        val cartInButton = dialogView.findViewById<Button>(R.id.cartInBtn)
+        val option1 = dialogView.findViewById<LinearLayout>(R.id.option1)
+        val option2 = dialogView.findViewById<LinearLayout>(R.id.option2)
+        val option3 = dialogView.findViewById<LinearLayout>(R.id.option3)
+
+        option1.setOnClickListener{
+            dialog.dismiss()
+            cartInSideDialog(productDB, index, index2,1)
+        }
+        option2.setOnClickListener{
+            dialog.dismiss()
+            cartInSideDialog(productDB, index, index2,2)
+        }
+        option3.setOnClickListener{
+            dialog.dismiss()
+            cartInSideDialog(productDB, index, index2,3)
+        }
         dialog.setView(dialogView)
-        cancelButton.setOnClickListener{
-            dialog.dismiss()
-        }
-        cartInButton.setOnClickListener{
-            cartInSideDialog(productDB, index, index2,)
-            dialog.dismiss()
-        }
         dialog.show()
     }
-    fun cartInSideDialog(productDB: ProductDB,index: Int,index2:Int){
+    fun cartInSideDialog(productDB: ProductDB,index: Int,index2:Int,drinkOptionIdx:Int){
+        val dialogTemp = AlertDialog.Builder(context)
+        val dialog = dialogTemp.create()
+        val dialogView = layoutInflater.inflate(R.layout.main_cart_in_combo_option_dialog,null)
 
+        val option1 = dialogView.findViewById<LinearLayout>(R.id.option1)
+        val option2 = dialogView.findViewById<LinearLayout>(R.id.option2)
+        val option3 = dialogView.findViewById<LinearLayout>(R.id.option3)
+
+        option1.setOnClickListener{
+            dialog.dismiss()
+            cartInSideDialog(productDB, index, index2,1)
+        }
+        option2.setOnClickListener{
+            dialog.dismiss()
+            cartInSideDialog(productDB, index, index2,2)
+        }
+        option3.setOnClickListener{
+            dialog.dismiss()
+            cartInSideDialog(productDB, index, index2,3)
+        }
+        dialog.setView(dialogView)
+        dialog.show()
     }
 
     fun cartInComboSuccess(productDB: ProductDB,index: Int,index2:Int,option1:String,option2:String){
