@@ -1,5 +1,6 @@
 package com.example.stageus_android_homework_
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,23 +27,26 @@ class MainPagePaymentOptionFragment:Fragment() {
     }
 
     fun initEvent(view: View){
+
         val backBtn = view.findViewById<Button>(R.id.backBtn)
         backBtn.setOnClickListener {
             val changeInterface = context as MainInterface
             changeInterface.changeFragment(1)
         }
+
         val cashPayButton = view.findViewById<Button>(R.id.cashPayBtn)
         cashPayButton.setOnClickListener {
-            val intent = Intent(context, CashPaymentPageActivity::class.java)
-            startActivity(intent)
-            //        여기서 데이터를 보내줘야 합니다. Data 전송 fragment to Activity
-            intent.putExtra("id_value", cart)
+                val intent = Intent(context, CashPaymentPageActivity::class.java)
+                intent.putExtra("cartData", cart)
+                startActivity(intent)
         }
         val cardPayButton = view.findViewById<Button>(R.id.cardPayBtn)
         cardPayButton.setOnClickListener {
-            val intent = Intent(context, CardPaymentPageActivity::class.java)
-            startActivity(intent)
+                val intent = Intent(context, CardPaymentPageActivity::class.java)
+                intent.putExtra("cartData", cart)
+                startActivity(intent)
         }
+
     }
     fun setPaymentPrice(view: View) {
         val textView = view.findViewById<TextView>(R.id.totalPrice)

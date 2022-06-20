@@ -1,5 +1,6 @@
 package com.example.stageus_android_homework_
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ class MainPageMainFragment:Fragment() {
         }
         val payButton = view.findViewById<Button>(R.id.payBtn)
         payButton.setOnClickListener {
+
             val changeInterface = context as MainInterface
             changeInterface.changeFragment(3)
         }
@@ -49,6 +51,17 @@ class MainPageMainFragment:Fragment() {
             changeInterface.changeFragment(7)
         }
 
+    }
+    fun emptyCart(){//dialog make
+        val dialog = AlertDialog.Builder(context)
+        dialog.setMessage("장바구니가 비어있음")
+        dialog.create()
+        dialog.show()
+//
+//        val dialogView = layoutInflater.inflate(R.layout.main_payment_alert_dialog,null)
+//        val cashPayButton = dialogView.findViewById<Button>(R.id.cancelBtn)
+//        cashPayButton.setOnClickListener {
+//            AlertDialog.Builder()
     }
 
 }

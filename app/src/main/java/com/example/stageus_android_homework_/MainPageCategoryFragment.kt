@@ -1,8 +1,8 @@
 package com.example.stageus_android_homework_
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,64 +38,79 @@ class MainPageCategoryFragment():Fragment() {
         val index = idValue.toInt()
         val layout = view.findViewById<LinearLayout>(R.id.parentLayout)
         val productDB = ProductDB()
-        if (index == 4){//세트메뉴
-            for (i in 0 until productDB.productArray[0].size) {
-                val layoutInflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val customView = layoutInflater.inflate(R.layout.main_category_customview,layout,false)
-                val imageView = customView.findViewById<ImageView>(R.id.symbol)
-                val text1View = customView.findViewById<TextView>(R.id.text1)
-                text1View.text = productDB.productArray[0][i][0] + " 세트"
-                val text2View = customView.findViewById<TextView>(R.id.text2)
-                text2View.text = (productDB.productArray[0][i][1].toInt()+2000).toString() + "원"
+        for (i in 0 until productDB.productArray[index-4].size) {
+            val layoutInflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val customView = layoutInflater.inflate(R.layout.main_category_customview,layout,false)
+            val imageView = customView.findViewById<ImageView>(R.id.symbol)
+            imageView.setImageResource(productDB.productArray[index-4][i][2] as Int)
+            val text1View = customView.findViewById<TextView>(R.id.text1)
+            text1View.text = productDB.productArray[index-4][i][0] as String
+            val text2View = customView.findViewById<TextView>(R.id.text2)
+            text2View.text = (productDB.productArray[index-4][i][1] as String) + "원"
+            layout.addView(customView)
 
-                when (productDB.productArray[0][i][0]) {
-                    "와퍼" -> imageView.setImageResource(R.mipmap.whopperset)
-                    "치즈와퍼" -> imageView.setImageResource(R.mipmap.cheeseset)
-                    "불고기와퍼" -> imageView.setImageResource(R.mipmap.bulgogiset)
-                    "새우와퍼" -> imageView.setImageResource(R.mipmap.shrimpset)
+            customView.setOnClickListener {
+                if (index == 4){//세트메뉴일 경우
+                    cartInDrinkDialog(productDB,index,i)//리턴 값으로 구분해서 실행을 나누면 함수 정형화가 안됩니다.
                 }
-                layout.addView(customView)
-                customView.setOnClickListener {
-                    val changeInterface = context as MainInterface
-                    val product = ProductInCartClass()
-                    product.productName = productDB.productArray[0][i][0] + "세트"
-                    product.productPrice = (productDB.productArray[0][i][1].toInt()+2000).toString()
-                    changeInterface.inCartProduct(product)
+                else{
+                    cartInDialog(productDB,index,i)//리턴 값으로 구분해서 실행을 나누면 함수 정형화가 안됩니다.
                 }
             }
         }
-        else{
-            for (i in 0 until productDB.productArray[index-5].size) {
-                val layoutInflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val customView = layoutInflater.inflate(R.layout.main_category_customview,layout,false)
-                val imageView = customView.findViewById<ImageView>(R.id.symbol)
-                val text1View = customView.findViewById<TextView>(R.id.text1)
-                text1View.text = productDB.productArray[index-5][i][0]
-                val text2View = customView.findViewById<TextView>(R.id.text2)
-                text2View.text = productDB.productArray[index-5][i][1] + "원"
 
-                when (productDB.productArray[index-5][i][0]) {
-                    "와퍼" -> imageView.setImageResource(R.mipmap.whopper)
-                    "치즈와퍼" -> imageView.setImageResource(R.mipmap.cheesewhopper)
-                    "불고기와퍼" -> imageView.setImageResource(R.mipmap.bulgogiwhopper)
-                    "새우와퍼" -> imageView.setImageResource(R.mipmap.shrimpwhopper)
-                    "콜라" -> imageView.setImageResource(R.mipmap.coke)
-                    "사이다" -> imageView.setImageResource(R.mipmap.cider)
-                    "환타" -> imageView.setImageResource(R.mipmap.fanta)
-                    "감자튀김" -> imageView.setImageResource(R.mipmap.frenchfri)
-                    "어니언링" -> imageView.setImageResource(R.mipmap.onionring)
-                    "치즈스틱" -> imageView.setImageResource(R.mipmap.cheesestick)
-                }
-                layout.addView(customView)
-                customView.setOnClickListener {
-                    val changeInterface = context as MainInterface
-                    val product = ProductInCartClass()
-                    product.productName = productDB.productArray[index-5][i][0]
-                    product.productPrice = productDB.productArray[index-5][i][1]
-                    changeInterface.inCartProduct(product)
-                }
-            }
+    }
+    fun cartInDrinkDialog(productDB: ProductDB,index: Int,index2:Int){
+        val dialogtemp = AlertDialog.Builder(context)
+        val dialog = dialogtemp.create()
+        val dialogView = layoutInflater.inflate(R.layout.main_cart_in_combo_option_dialog,null)
+        val cancelButton = dialogView.findViewById<Button>(R.id.cancelBtn)
+        val cartInButton = dialogView.findViewById<Button>(R.id.cartInBtn)
+        dialog.setView(dialogView)
+        cancelButton.setOnClickListener{
+            dialog.dismiss()
         }
+        cartInButton.setOnClickListener{
+            cartInSideDialog(productDB, index, index2,)
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+    fun cartInSideDialog(productDB: ProductDB,index: Int,index2:Int){
+
+    }
+
+    fun cartInComboSuccess(productDB: ProductDB,index: Int,index2:Int,option1:String,option2:String){
+        val changeInterface = context as MainInterface
+        val product = ProductInCartClass()
+        product.productName = productDB.productArray[index-4][index2][0] as String
+        product.productPrice = productDB.productArray[index-4][index2][1] as String
+        changeInterface.inCartProduct(product)
+    }
+
+    fun cartInDialog(productDB: ProductDB,index: Int,index2:Int){
+        val dialogtemp = AlertDialog.Builder(context)
+        val dialog = dialogtemp.create()
+        val dialogView = layoutInflater.inflate(R.layout.main_cart_in_dialog,null)
+        val cancelButton = dialogView.findViewById<Button>(R.id.cancelBtn)
+        val cartInButton = dialogView.findViewById<Button>(R.id.cartInBtn)
+        dialog.setView(dialogView)
+        cancelButton.setOnClickListener{
+            dialog.dismiss()
+        }
+        cartInButton.setOnClickListener{
+            cartInSuccess(productDB, index, index2)
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+    fun cartInSuccess(productDB: ProductDB,index: Int,index2:Int){
+        val changeInterface = context as MainInterface
+        val product = ProductInCartClass()
+        product.productName = productDB.productArray[index-4][index2][0] as String
+        product.productPrice = productDB.productArray[index-4][index2][1] as String
+        changeInterface.inCartProduct(product)
     }
 }
 

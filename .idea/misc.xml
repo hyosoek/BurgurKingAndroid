@@ -34,11 +34,17 @@
         <entry key="app/src/main/res/layout/incart_message_box.xml" value="0.2676284790039062" />
         <entry key="app/src/main/res/layout/init_page.xml" value="0.34675140380859376" />
         <entry key="app/src/main/res/layout/logo_backbtn_fragment.xml" value="0.28648070571462325" />
+        <entry key="app/src/main/res/layout/main_cart_in_dialog.xml" value="0.39333048311244123" />
+        <entry key="app/src/main/res/layout/main_cart_in_side_option_dialog.xml" value="0.30354852501068835" />
         <entry key="app/src/main/res/layout/main_category_customview.xml" value="0.3016338014052229" />
+        <entry key="app/src/main/res/layout/main_combo_cart_in_dialog.xml" value="0.30354852501068835" />
+        <entry key="app/src/main/res/layout/main_emptycart_alert_dialog.xml" value="0.39333048311244123" />
         <entry key="app/src/main/res/layout/main_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_page2_none_use.xml" value="0.2441214194100043" />
         <entry key="app/src/main/res/layout/main_page_2nd_ver.xml" value="0.37674560546875" />
         <entry key="app/src/main/res/layout/main_page_fragment.xml" value="0.2441214194100043" />
+        <entry key="app/src/main/res/layout/main_payment_alert_dialog.xml" value="0.23557075673364686" />
+        <entry key="app/src/main/res/layout/main_payment_alert_dilog.xml" value="0.23557075673364686" />
         <entry key="app/src/main/res/layout/menu_burger_fragment.xml" value="0.2767843832771918" />
         <entry key="app/src/main/res/layout/menu_burger_page.xml" value="0.2321504916631039" />
         <entry key="app/src/main/res/layout/menu_combo_page.xml" value="0.49603424072265634" />
