@@ -30,50 +30,10 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:background="@drawable/yellow_round">
-
-                <ImageView
-                    android:id="@+id/whopper"
-                    android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.3"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@color/burgerking_white"
-                    android:layout_marginLeft="10dp"
-                    android:scaleType="fitXY"
-                    android:src="@mipmap/whopper"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="와퍼"
-                    android:background="@drawable/yellow_round"
-                    app:layout_constraintStart_toEndOf="@+id/whopper"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="4500원"
-                    android:background="@drawable/yellow_round"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
         </LinearLayout>
     </ScrollView>
 
@@ -95,6 +55,7 @@
             android:textColor="@color/burgerking_brown"/>
 
         <TextView
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4500원"

@@ -1,7 +1,13 @@
 package com.example.stageus_android_homework_
 
 import android.app.AlertDialog
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Bundle
+import android.os.IBinder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +15,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 
 class MainPageMainFragment:Fragment() {
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.main_main_fragment, container, false)
         initEvent(view)
@@ -20,9 +28,9 @@ class MainPageMainFragment:Fragment() {
             val changeInterface = context as MainInterface
             changeInterface.changeFragment(2)
         }
+
         val payButton = view.findViewById<Button>(R.id.payBtn)
         payButton.setOnClickListener {
-
             val changeInterface = context as MainInterface
             changeInterface.changeFragment(3)
         }

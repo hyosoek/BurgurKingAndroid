@@ -1,8 +1,13 @@
 package com.example.stageus_android_homework_
 
 import android.app.AlertDialog
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Bundle
+import android.os.IBinder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,14 +20,31 @@ import com.example.byoapplication.ProductDB
 
 class MainPageCategoryFragment():Fragment() {
     var idValue = ""
+
+    lateinit var myService: MultiService
+    var isService = false
+    var connection = object : ServiceConnection {
+        override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
+            val binder = service as MultiService.MyBinder
+            myService = binder.getService()
+            isService = true
+            Log.d("result_message","성공여부 : ${isService}")
+        }
+        override fun onServiceDisconnected(className: ComponentName?) {
+            isService = false
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         idValue = arguments?.getString("indexValue").toString()
-
         val view = inflater.inflate(R.layout.main_category_fragment, container, false)
         initEvent(view) // index를 받아와야함
+        Intent(context, MultiService::class.java).also { intent ->
+            activity?.bindService(intent, connection, Context.BIND_AUTO_CREATE)
+        }
         createView(view)
         return view
     }
@@ -125,14 +147,15 @@ class MainPageCategoryFragment():Fragment() {
     }
 
     fun cartInComboSuccess(productDB: ProductDB,index: Int,index2:Int,drinkOptionIdx: Int,sideOptionIdx: Int){
-        val changeInterface = context as MainInterface
+        //val changeInterface = context as MainInterface
         val product = ProductInCartClass()
         product.productName = productDB.productArray[index-4][index2][0] as String
         product.productPrice = productDB.productArray[index-4][index2][1] as String
         product.productImage = productDB.productArray[index-4][index2][2] as Int
         product.option1 = productDB.productArray[2][drinkOptionIdx-1][0] as String
         product.option2 = productDB.productArray[3][sideOptionIdx-1][0] as String
-        changeInterface.inCartProduct(product)
+        //changeInterface.inCartProduct(product)
+        myService.cart.addCart(product)
     }
 
     fun cartInDialog(productDB: ProductDB,index: Int,index2:Int){

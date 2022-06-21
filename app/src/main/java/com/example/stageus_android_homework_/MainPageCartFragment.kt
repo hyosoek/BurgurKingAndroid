@@ -1,8 +1,11 @@
 package com.example.stageus_android_homework_
 
 import android.app.AlertDialog
+import android.content.ComponentName
 import android.content.Context
+import android.content.ServiceConnection
 import android.os.Bundle
+import android.os.IBinder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,13 +21,14 @@ class MainPageCartFragment:Fragment() {
     var cart = CartClass()
     val customViewList = mutableListOf<View>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        cart = arguments?.getSerializable("cartData") as CartClass
         val view = inflater.inflate(R.layout.main_cart_fragment, container, false)
-        cart = arguments?.getSerializable("Cart") as CartClass
         initEvent(view)
         makeView(view)
         renewPriceSum(view)

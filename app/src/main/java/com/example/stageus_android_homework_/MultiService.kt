@@ -14,42 +14,46 @@ import android.os.Binder
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 
-class MultiService :Service(){
+class MultiService :Service() {
     val SC = "myService"
-    val cart = CartClass()
+    val cart = CartClass() //
+    val iBinder = MyBinder()
+    var nc: Notification? = null
+
+
+    override fun onBind(intent: Intent): IBinder {
+        return iBinder
+    }
+
+    inner class MyBinder : Binder() {
+        fun getService(): MultiService = this@MultiService
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Notification()
+        nc = NotificationCompat.Builder(this, SC).setContentTitle("버거킹앱 실행했습니다.").setSmallIcon(R.mipmap.ic_launcher_round).build()
+        startForeground(1, nc)
+
+        return super.onStartCommand(intent, flags, startId)
+    }
 
     fun Notification() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             val nc = NotificationChannel(SC, "My Service Channel", NotificationManager.IMPORTANCE_DEFAULT)
             val nm = getSystemService(NotificationManager::class.java)
-
             nm.createNotificationChannel(nc)
-        } else {
+        }
+        else {
             Toast.makeText(this, "알림을 실행할 수 없음", Toast.LENGTH_LONG).show()
         }
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Notification()
-        val nc: Notification = NotificationCompat.Builder(this, SC).setContentTitle("버거킹 앱이 실행중이다 돼지야.").setSmallIcon(R.mipmap.ic_launcher_round).build()
-        startForeground(1, nc)
 
-        return super.onStartCommand(intent, flags, startId)
-    }
-    //여기까진 뭐다 - notification
-
-    inner class MyBinder : Binder(){
-        val service: MultiService
-            get() = this@MultiService
-    }
-    val binder = MyBinder()
-
-    override fun onBind(intent: Intent): IBinder? {
-        return binder
-    }
+    //여기까진 - notification
 
 
 }
