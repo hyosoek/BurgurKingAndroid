@@ -16,22 +16,19 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.byoapplication.ProductDB
 
 class MainPageCategoryFragment():Fragment() {
     var idValue = ""
 
-    lateinit var myService: MultiService
-    var isService = false
+    lateinit var myService: CartService
     var connection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
-            val binder = service as MultiService.MyBinder
+            val binder = service as CartService.MyBinder
             myService = binder.getService()
-            isService = true
-            Log.d("result_message","성공여부 : ${isService}")
         }
         override fun onServiceDisconnected(className: ComponentName?) {
-            isService = false
         }
     }
 
@@ -42,7 +39,7 @@ class MainPageCategoryFragment():Fragment() {
         idValue = arguments?.getString("indexValue").toString()
         val view = inflater.inflate(R.layout.main_category_fragment, container, false)
         initEvent(view) // index를 받아와야함
-        Intent(context, MultiService::class.java).also { intent ->
+        Intent(context, CartService::class.java).also { intent ->
             activity?.bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }
         createView(view)
@@ -63,8 +60,9 @@ class MainPageCategoryFragment():Fragment() {
         for (i in 0 until productDB.productArray[index-4].size) {
             val layoutInflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val customView = layoutInflater.inflate(R.layout.main_category_customview,layout,false)
-            val imageView = customView.findViewById<ImageView>(R.id.symbol)
-            imageView.setImageResource(productDB.productArray[index-4][i][2] as Int)
+            Glide.with(view)
+                .load(productDB.productArray[index-4][i][2] as Int)
+                .into(customView.findViewById(R.id.symbol))
             val text1View = customView.findViewById<TextView>(R.id.text1)
             text1View.text = productDB.productArray[index-4][i][0] as String
             val text2View = customView.findViewById<TextView>(R.id.text2)
@@ -89,6 +87,15 @@ class MainPageCategoryFragment():Fragment() {
         val option1 = dialogView.findViewById<LinearLayout>(R.id.option1)
         val option2 = dialogView.findViewById<LinearLayout>(R.id.option2)
         val option3 = dialogView.findViewById<LinearLayout>(R.id.option3)
+        Glide.with(this)
+            .load(R.mipmap.coke)
+            .into(dialogView.findViewById<ImageView>(R.id.image1))
+        Glide.with(this)
+            .load(R.mipmap.cider)
+            .into(dialogView.findViewById<ImageView>(R.id.image2))
+        Glide.with(this)
+            .load(R.mipmap.fanta)
+            .into(dialogView.findViewById<ImageView>(R.id.image3))
 
         option1.setOnClickListener{
             dialog.dismiss()
@@ -110,18 +117,22 @@ class MainPageCategoryFragment():Fragment() {
         val dialog = dialogTemp.create()
         val dialogView = layoutInflater.inflate(R.layout.main_cart_in_combo_option_dialog,null)
         //이부분 리팩토링
-        val imageView1 = dialogView.findViewById<ImageView>(R.id.image1)
-        imageView1.setImageResource(R.mipmap.frenchfri)
+
+        Glide.with(this)
+            .load(R.mipmap.frenchfri)
+            .into(dialogView.findViewById<ImageView>(R.id.image1))
         val textView1 = dialogView.findViewById<TextView>(R.id.text1)
         textView1.text = "감자튀김"
 
-        val imageView2 = dialogView.findViewById<ImageView>(R.id.image2)
-        imageView2.setImageResource(R.mipmap.onionring)
+        Glide.with(this)
+            .load(R.mipmap.onionring)
+            .into(dialogView.findViewById<ImageView>(R.id.image2))
         val textView2 = dialogView.findViewById<TextView>(R.id.text2)
         textView2.text = "어니언링"
 
-        val imageView3 = dialogView.findViewById<ImageView>(R.id.image3)
-        imageView3.setImageResource(R.mipmap.cheesestick)
+        Glide.with(this)
+            .load(R.mipmap.cheesestick)
+            .into(dialogView.findViewById<ImageView>(R.id.image3))
         val textView3 = dialogView.findViewById<TextView>(R.id.text3)
         textView3.text = "치즈스틱"
 
@@ -155,7 +166,7 @@ class MainPageCategoryFragment():Fragment() {
         product.option1 = productDB.productArray[2][drinkOptionIdx-1][0] as String
         product.option2 = productDB.productArray[3][sideOptionIdx-1][0] as String
         //changeInterface.inCartProduct(product)
-        myService.cart.addCart(product)
+        myService.addCart(product)
     }
 
     fun cartInDialog(productDB: ProductDB,index: Int,index2:Int){

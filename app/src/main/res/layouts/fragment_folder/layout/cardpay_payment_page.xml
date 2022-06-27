@@ -29,7 +29,6 @@
             app:layout_constraintWidth_percent="0.2"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@mipmap/cardinsert"
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

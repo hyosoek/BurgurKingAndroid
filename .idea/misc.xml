@@ -34,9 +34,10 @@
         <entry key="app/src/main/res/layout/incart_message_box.xml" value="0.2676284790039062" />
         <entry key="app/src/main/res/layout/init_page.xml" value="0.34675140380859376" />
         <entry key="app/src/main/res/layout/logo_backbtn_fragment.xml" value="0.28648070571462325" />
-        <entry key="app/src/main/res/layout/main_cart_in_combo_option_dialog.xml" value="0.20022210899506349" />
+        <entry key="app/src/main/res/layout/main_cart_in_combo_option_dialog.xml" value="0.4691124898544385" />
         <entry key="app/src/main/res/layout/main_cart_in_dialog.xml" value="0.39333048311244123" />
         <entry key="app/src/main/res/layout/main_cart_in_side_option_dialog.xml" value="0.30354852501068835" />
+        <entry key="app/src/main/res/layout/main_cart_inout_dialog.xml" value="0.31295425395468146" />
         <entry key="app/src/main/res/layout/main_category_customview.xml" value="0.3016338014052229" />
         <entry key="app/src/main/res/layout/main_combo_cart_in_dialog.xml" value="0.30354852501068835" />
         <entry key="app/src/main/res/layout/main_emptycart_alert_dialog.xml" value="0.39333048311244123" />
@@ -110,12 +111,10 @@
         <entry key="app/src/main/res/layouts/window_folder/layout/page_incart_message_box.xml" value="0.25908507909362977" />
         <entry key="app/src/main/res/layouts/window_folder/layout/page_option.xml" value="0.2441214194100043" />
         <entry key="app/src/main/res/layouts/window_folder/layout/z_trash_option_side.xml" value="0.4630183839247542" />
+        <entry key="app/src/main/res/layouts/window_folder/layout/z_trash_turn_to_dialog.xml" value="0.31295425395468146" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.319" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/stageus_android_homework_/MultiService2.kt" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

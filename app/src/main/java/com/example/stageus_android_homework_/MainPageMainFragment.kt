@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 
 class MainPageMainFragment:Fragment() {
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.main_main_fragment, container, false)
         initEvent(view)
@@ -60,16 +59,4 @@ class MainPageMainFragment:Fragment() {
         }
 
     }
-    fun emptyCart(){//dialog make
-        val dialog = AlertDialog.Builder(context)
-        dialog.setMessage("장바구니가 비어있음")
-        dialog.create()
-        dialog.show()
-//
-//        val dialogView = layoutInflater.inflate(R.layout.main_payment_alert_dialog,null)
-//        val cashPayButton = dialogView.findViewById<Button>(R.id.cancelBtn)
-//        cashPayButton.setOnClickListener {
-//            AlertDialog.Builder()
-    }
-
 }

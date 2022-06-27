@@ -8,32 +8,33 @@ import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
-import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 
 interface MainInterface{
-
     fun changeFragment(fragmentNum : Int)
     fun inCartProduct(product : ProductInCartClass)
     fun delCartProduct(index : Int)
 }
-lateinit var myService: MultiService
-var isService = false
-var connection = object : ServiceConnection {
-    override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
-        val binder = service as MultiService.MyBinder
-        myService = binder.getService()
-        isService = true
-        Log.d("result_message","성공여부 : ${isService}")
-    }
-    override fun onServiceDisconnected(className: ComponentName?) {
-        isService = false
-    }
-}
+
 
 class MainPageActivity : AppCompatActivity() ,MainInterface{
+    lateinit var myService: CartService
+    var isService = false
+    var connection = object : ServiceConnection {
+        override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
+            val binder = service as CartService.MyBinder
+            myService = binder.getService()
+            isService = true
+        }
+        override fun onServiceDisconnected(className: ComponentName?) {
+            isService = false
+        }
+    }
+
     override fun changeFragment(fragmentNum : Int) {
         if (fragmentNum == 0) {
             finish()
@@ -45,17 +46,17 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
         else if(fragmentNum == 2) { //cart
             val fragmentTemp = MainPageCartFragment()//파일명을 가져와야함.
             val bundle = Bundle()
-            bundle.putSerializable("cartData",myService.cart)
+            bundle.putSerializable("cartList",myService.cartList)
+            bundle.putInt("priceSum",myService.priceSum)
             fragmentTemp.arguments = bundle
             val fragmentTemp1 = fragmentTemp//파일명을 가져와야함.
             supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp1).commit()//가져온 프래그먼트를 붙여줍니다. 첫번째는 위치, 두번째는 물건
-
         }
         else if(fragmentNum == 3) { //payment
-            if (myService.cart.priceSum != 0) {
+            if (myService.priceSum != 0) {
                 val fragmentTemp = MainPagePaymentOptionFragment()
                 val bundle = Bundle()
-                bundle.putSerializable("cartData",myService.cart)
+                bundle.putInt("priceSum",myService.priceSum)
                 fragmentTemp.arguments = bundle
                 val fragmentTemp1 = fragmentTemp//파일명을 가져와야함.
                 supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp1).commit()
@@ -73,18 +74,25 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
         }
     }
     override fun inCartProduct(product: ProductInCartClass) {
-        myService.cart.addCart(product) }
+        myService.addCart(product) }
+
     override fun delCartProduct(index: Int) {
-        myService.cart.editCart(index)
+        myService.editCart(index)
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?){
+        Intent(this, CartService::class.java).also { intent ->
+            bindService(intent, connection, Context.BIND_AUTO_CREATE)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_common_page)
+        Glide.with(this)
+            .load(R.mipmap.burgerkinglogo)
+            .into(findViewById<ImageView>(R.id.logoimage1))
+
         val fragmentTemp = MainPageMainFragment()//파일명을 가져와야함.
         supportFragmentManager.beginTransaction().add(R.id.fragmentBox, fragmentTemp).commit()//가져온 프래그먼트를 붙여줍니다. 첫번째는 위치, 두번째는 물건
-
     }
 
     fun emptyCartDialog(){//dialog make
@@ -101,13 +109,8 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
 
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
-        val intent = Intent(this, MultiService::class.java)
+        val intent = Intent(this, CartService::class.java)
         ContextCompat.startForegroundService(this, intent)
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        //notification 제거
     }
 }
 

@@ -41,8 +41,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:background="@color/burgerking_white"
-                android:scaleType="fitXY"
-                android:src="@mipmap/coke">
+                android:scaleType="fitXY">
             </ImageView>
             <TextView
                 android:id="@+id/text1"
@@ -72,8 +71,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:background="@color/burgerking_white"
-                android:scaleType="fitXY"
-                android:src="@mipmap/cider">
+                android:scaleType="fitXY">
             </ImageView>
             <TextView
                 android:id="@+id/text2"
@@ -102,8 +100,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:background="@color/burgerking_white"
-                android:scaleType="fitXY"
-                android:src="@mipmap/fanta">
+                android:scaleType="fitXY">
             </ImageView>
             <TextView
                 android:id="@+id/text3"

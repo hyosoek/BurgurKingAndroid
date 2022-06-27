@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 
 class InitPageActivity : AppCompatActivity() {
 
@@ -18,7 +19,13 @@ class InitPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.init_page)
+        setImage()
         initEvent()
+    }
+    fun setImage(){
+        Glide.with(this)
+            .load(R.mipmap.burgerkinglogo)
+            .into(findViewById(R.id.imageView))
     }
 
     fun initEvent() {

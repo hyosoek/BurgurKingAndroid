@@ -10,31 +10,35 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 class CardPaymentPageActivity: AppCompatActivity() {
-    var cart = CartClass()
-    lateinit var myService: MultiService
-    var isService = false
+    lateinit var myService: CartService
+    var priceSum = 0
     var connection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
-            val binder = service as MultiService.MyBinder
+            val binder = service as CartService.MyBinder
             myService = binder.getService()
-            isService = true
-            Log.d("result_message","성공여부 : ${isService}")
         }
         override fun onServiceDisconnected(className: ComponentName?) {
-            isService = false
         }
     }
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cardpay_payment_page)
-        cart = intent.getSerializableExtra("cartData") as CartClass
-        Intent(this, MultiService::class.java).also { intent ->
+        priceSum = intent.getSerializableExtra("priceSum") as Int
+        Intent(this, CartService::class.java).also { intent ->
             bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }
+        imageSet()
         initEvent()
         setPrice()
+    }
+    fun imageSet()
+    {
+        Glide.with(this)
+            .load(R.mipmap.cardinsert)
+            .into(findViewById(R.id.card_image))
     }
     fun initEvent() {
         val backBtn = findViewById<Button>(R.id.backBtn)
@@ -44,14 +48,13 @@ class CardPaymentPageActivity: AppCompatActivity() {
         val payBtn = findViewById<Button>(R.id.payBtn)
         payBtn.setOnClickListener {
             val intentMain = Intent(this,PaymentEndPageActivity::class.java)
-            intentMain.putExtra("cartData", myService.cart)
+            intentMain.putExtra("cartList", myService.cartList)
             startActivity(intentMain)
             finish()
         }
     }
     fun setPrice() {
         val price = findViewById<TextView>(R.id.totalPrice)
-        cart.priceSum
-        price.text = (cart.priceSum).toString() + "원"
+        price.text = priceSum.toString() + "원"
     }
 }

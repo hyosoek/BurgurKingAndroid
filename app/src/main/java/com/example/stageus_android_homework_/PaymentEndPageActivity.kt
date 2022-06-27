@@ -8,31 +8,32 @@ import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 class PaymentEndPageActivity(): AppCompatActivity() {
-    var cart = CartClass()
-    lateinit var myService: MultiService
-    var isService = false
+    var cartList = arrayListOf<ProductInCartClass>()
+    lateinit var myService: CartService
     var connection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
-            val binder = service as MultiService.MyBinder
+            val binder = service as CartService.MyBinder
             myService = binder.getService()
-            isService = true
-            Log.d("result_message","성공여부 : ${isService}")
         }
         override fun onServiceDisconnected(className: ComponentName?) {
-            isService = false
         }
     }
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.paymentend_show_page)
-        Intent(this, MultiService::class.java).also { intent ->
+        Intent(this, CartService::class.java).also { intent ->
             bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }
-        val cartData = intent.getSerializableExtra("cartData")as CartClass
-        cart = cartData
+        Glide.with(this)
+            .load(R.mipmap.burgerkinglogo)
+            .into(findViewById<ImageView>(R.id.logoimage))
+
+        cartList = intent.getSerializableExtra("cartList") as ArrayList<ProductInCartClass>
         initEvent()
     }
     fun initEvent(){
@@ -41,13 +42,19 @@ class PaymentEndPageActivity(): AppCompatActivity() {
             val i = Intent(this, InitPageActivity::class.java)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(i)
+            myService.delNotification()
+            myService.cartClear()
         }
         val receiptBtn = findViewById<Button>(R.id.receiptBtn)
         receiptBtn.setOnClickListener {
             val intentMain = Intent(this,RecieptPageActivity::class.java)
-            intentMain.putExtra("cartData", myService.cart)
+            intentMain.putExtra("cartData", myService.cartList)
+            intentMain.putExtra("priceSum", myService.priceSum)
             startActivity(intentMain)
             finish()
+            myService.delNotification()
+            myService.cartClear()
+
         }
 
     }

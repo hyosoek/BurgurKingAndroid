@@ -1,6 +1,5 @@
 package com.example.stageus_android_homework_
 
-import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -17,18 +16,15 @@ import androidx.fragment.app.Fragment
 
 //메인 액티비티에 들어가는 프래그먼트
 class MainPagePaymentOptionFragment:Fragment() {
-    var cart = CartClass()
-    lateinit var myService: MultiService
-    var isService = false
+    lateinit var myService: CartService
+    var priceSum = 0
+
     var connection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName?, service: IBinder?) {
-            val binder = service as MultiService.MyBinder
+            val binder = service as CartService.MyBinder
             myService = binder.getService()
-            isService = true
-            Log.d("result_message","성공여부 : ${isService}")
         }
         override fun onServiceDisconnected(className: ComponentName?) {
-            isService = false
         }
     }
 
@@ -39,9 +35,10 @@ class MainPagePaymentOptionFragment:Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.main_payoption_fragment, container, false)
         initEvent(view)
-        val intent = Intent(context, MultiService::class.java)
-        activity?.bindService(intent, connection, Context.BIND_AUTO_CREATE)
-        cart = arguments?.getSerializable("cartData") as CartClass
+        Intent(context, CartService::class.java).also { intent ->
+            activity?.bindService(intent, connection, Context.BIND_AUTO_CREATE)
+        }
+        priceSum = arguments?.getInt("priceSum") as Int
         setPaymentPrice(view)
         return view
     }
@@ -56,14 +53,15 @@ class MainPagePaymentOptionFragment:Fragment() {
         val cashPayButton = view.findViewById<Button>(R.id.cashPayBtn)
         cashPayButton.setOnClickListener {
             val intent = Intent(context, CashPaymentPageActivity::class.java)
-            intent.putExtra("cartData", myService.cart)
+            intent.putExtra("priceSum",myService.priceSum)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
             startActivity(intent)
         }
+
         val cardPayButton = view.findViewById<Button>(R.id.cardPayBtn)
         cardPayButton.setOnClickListener {
             val intent = Intent(context, CardPaymentPageActivity::class.java)
-            intent.putExtra("cartData", myService.cart)
+            intent.putExtra("priceSum",myService.priceSum)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
             startActivity(intent)
         }
@@ -71,7 +69,7 @@ class MainPagePaymentOptionFragment:Fragment() {
     }
     fun setPaymentPrice(view: View) {
         val textView = view.findViewById<TextView>(R.id.totalPrice)
-        textView.text = cart.priceSum.toString() + "원"
+        textView.text = priceSum.toString() + "원"
     }
 
 }
