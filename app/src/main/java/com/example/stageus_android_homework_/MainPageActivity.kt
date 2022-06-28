@@ -90,7 +90,8 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
         Glide.with(this)
             .load(R.mipmap.burgerkinglogo)
             .into(findViewById<ImageView>(R.id.logoimage1))
-
+        val data = Database()
+        Log.d("data12345",data.myMenuData.combo_list[0].name)
         val fragmentTemp = MainPageMainFragment()//파일명을 가져와야함.
         supportFragmentManager.beginTransaction().add(R.id.fragmentBox, fragmentTemp).commit()//가져온 프래그먼트를 붙여줍니다. 첫번째는 위치, 두번째는 물건
     }

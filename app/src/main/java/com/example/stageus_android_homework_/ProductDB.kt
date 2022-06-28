@@ -1,6 +1,7 @@
 package com.example.byoapplication
 
 import com.example.stageus_android_homework_.R
+import com.google.gson.Gson
 
 class ProductDB {
     val comboArray = arrayOf(arrayOf("와퍼세트", "6500", R.mipmap.whopperset),
@@ -17,7 +18,6 @@ class ProductDB {
     var sideArrary = arrayOf(arrayOf("감자튀김", "2000",R.mipmap.frenchfri),
         arrayOf("어니언링", "3000",R.mipmap.onionring),
         arrayOf("치즈스틱", "2000",R.mipmap.cheesestick))
-
 
     val productArray = arrayOf(comboArray,burgerArrary,drinkArrary,sideArrary)
 

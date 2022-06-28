@@ -22,6 +22,7 @@ class CartService :Service(),Serializable{
             cartList.removeAt(index)
         }
         updateIncartPrice()
+
     }
 
     fun addCart(incartZClassProduct : ProductInCartClass) {
@@ -91,6 +92,7 @@ class CartService :Service(),Serializable{
                 noti = builder.build()
                 startForeground(1, noti)
             }
+
         }
     }
 
