@@ -4,6 +4,7 @@ import com.google.gson.Gson
 
 
 class Database {
+    //이미지 파일을 R.id. 이런식으로 넣으면 다른 곳에서는 사용 못하는 json파일임. 이미지 파일 이름 그자체를 넣어주고 변환하는게 맞습니다.
     val data = "{"+
             "'combo_list':["+
             "{'name' : '와퍼세트','price' : '6500','image' : whopperset},"+

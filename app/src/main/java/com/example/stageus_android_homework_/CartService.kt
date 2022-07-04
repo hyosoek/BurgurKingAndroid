@@ -22,7 +22,6 @@ class CartService :Service(),Serializable{
             cartList.removeAt(index)
         }
         updateIncartPrice()
-
     }
 
     fun addCart(incartZClassProduct : ProductInCartClass) {
