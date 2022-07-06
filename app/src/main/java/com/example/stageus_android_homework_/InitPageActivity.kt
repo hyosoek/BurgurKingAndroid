@@ -29,7 +29,7 @@ class InitPageActivity : AppCompatActivity() {
     }
 
     fun initEvent() {
-        val showMainButton = findViewById<Button>(R.id.showMainButton)
+        val showMainButton = findViewById<Button>(R.id.signInBtn)
         showMainButton.setOnClickListener {
             val intentMain = Intent(this,MainPageActivity::class.java)
             startActivity(intentMain)

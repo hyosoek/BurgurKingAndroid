@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
@@ -17,21 +18,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/signInBtn"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/idEditText"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:hint="id"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/burgerking_brown"
+            android:textColorHint="@color/burgerking_brown"/>
+        <EditText
+            android:id="@+id/pwEditText"
+            android:layout_width="match_parent"
+            android:hint="pw"
+            android:paddingLeft="10dp"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:textColor="@color/burgerking_brown"
+            android:textColorHint="@color/burgerking_brown"/>
+
+    </LinearLayout>
+
 
     <Button
-        android:id="@+id/showMainButton"
+        android:id="@+id/signInBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/red_round"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
-        android:text="주문하기"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="로그인"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintWidth_percent="0.5" />
+    <Button
+        android:id="@+id/signUpBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_round"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="회원가입"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInBtn"
         app:layout_constraintWidth_percent="0.5" />
 
 
