@@ -40,7 +40,10 @@
         <entry key="app/src/main/res/layout/main_cart_inout_dialog.xml" value="0.31295425395468146" />
         <entry key="app/src/main/res/layout/main_category_customview.xml" value="0.3016338014052229" />
         <entry key="app/src/main/res/layout/main_combo_cart_in_dialog.xml" value="0.30354852501068835" />
+        <entry key="app/src/main/res/layout/main_combo_option_customview.xml" value="0.3685335613510047" />
         <entry key="app/src/main/res/layout/main_emptycart_alert_dialog.xml" value="0.39333048311244123" />
+        <entry key="app/src/main/res/layout/main_log_in_fragment.xml" value="0.40872167592988456" />
+        <entry key="app/src/main/res/layout/main_main_fragment_customview.xml" value="0.24027362120564344" />
         <entry key="app/src/main/res/layout/main_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_page2_none_use.xml" value="0.2441214194100043" />
         <entry key="app/src/main/res/layout/main_page_2nd_ver.xml" value="0.37674560546875" />
@@ -57,6 +60,7 @@
         <entry key="app/src/main/res/layout/menu_side_page.xml" value="0.2441214194100043" />
         <entry key="app/src/main/res/layout/menu_side_page_fragment.xml" value="0.26113585708181075" />
         <entry key="app/src/main/res/layout/menu_to_cart_ask.xml" value="0.19921417236328132" />
+        <entry key="app/src/main/res/layout/mina_main_fragment_customview.xml" value="0.40872167592988456" />
         <entry key="app/src/main/res/layout/none_use_main.xml" value="0.2441214194100043" />
         <entry key="app/src/main/res/layout/option_drink.xml" value="0.2321504916631039" />
         <entry key="app/src/main/res/layout/option_side.xml" value="0.2321504916631039" />
@@ -67,6 +71,7 @@
         <entry key="app/src/main/res/layout/payment_end.xml" value="0.32283805269826016" />
         <entry key="app/src/main/res/layout/payment_page.xml" value="0.2617706298828125" />
         <entry key="app/src/main/res/layout/receipt.xml" value="0.2321504916631039" />
+        <entry key="app/src/main/res/layout/total_sales_page.xml" value="0.2672082086361693" />
         <entry key="app/src/main/res/layout/warn_no_cart_message_box.xml" value="0.2441214194100043" />
         <entry key="app/src/main/res/layouts/atomic_folder/layout/cashpay_payment_page.xml" value="0.4630183839247542" />
         <entry key="app/src/main/res/layouts/atomic_folder/layout/init_page.xml" value="0.26425476074218757" />

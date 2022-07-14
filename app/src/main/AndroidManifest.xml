@@ -3,6 +3,7 @@
     package="com.example.stageus_android_homework_">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -25,8 +26,9 @@
         <activity android:name=".CardPaymentPageActivity" />
         <activity android:name=".PaymentEndPageActivity" />
         <activity android:name=".RecieptPageActivity" />
+        <activity android:name=".TotalSalesPage"/>
         <service android:name=".CartService"/>
-        a
+
     </application>
 
 </manifest>

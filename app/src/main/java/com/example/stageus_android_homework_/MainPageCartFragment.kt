@@ -7,12 +7,10 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -56,7 +54,7 @@ class MainPageCartFragment:Fragment() {
         val backBtn = view.findViewById<Button>(R.id.backBtn)
         backBtn.setOnClickListener{
             val changeInterface = context as MainInterface
-            changeInterface.changeFragment(1)
+            changeInterface.changeFragment(1,null)
         }
         makeView(view)
     }
@@ -77,6 +75,11 @@ class MainPageCartFragment:Fragment() {
             Glide.with(view)
                 .load(cartList[i].productImage)
                 .into(customView.findViewById(R.id.symbol))
+            if(cartList[i].productURLImage !=null){
+                Glide.with(view)
+                    .load("http://3.39.66.6:3000"+ cartList[i].productURLImage)
+                    .into(customView.findViewById(R.id.symbol))
+            }
 
             layout.addView(customView)
             customViewList.add(customView)

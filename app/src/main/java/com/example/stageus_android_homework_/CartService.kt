@@ -16,6 +16,7 @@ import java.io.Serializable
 class CartService :Service(),Serializable{
     var cartList = arrayListOf<ProductInCartClass>()
     var priceSum = 0
+    var userId = ""
 
     fun editCart(index : Int) { // index로 카트 내 데이터 제거
         if ((index < cartList.size) and (-1 < index) ){

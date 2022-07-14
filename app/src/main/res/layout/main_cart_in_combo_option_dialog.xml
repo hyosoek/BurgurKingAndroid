@@ -10,109 +10,22 @@
         android:text="옵션을 선택해주세요"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/lin"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         android:textColor="@color/burgerking_brown"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp">
 
     </TextView>
     <LinearLayout
-        android:id="@+id/lin"
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <LinearLayout
-            android:id="@+id/option1"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:padding="10dp"
-            android:background="@drawable/yellow_round"
-            android:orientation="vertical"
-            android:gravity="center">
-            <ImageView
-                android:id="@+id/image1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:background="@color/burgerking_white"
-                android:scaleType="fitXY">
-            </ImageView>
-            <TextView
-                android:id="@+id/text1"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="콜라"
-                android:textSize="18dp"
-                android:background="@drawable/yellow_round">
-            </TextView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/option2"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:padding="10dp"
-            android:background="@drawable/yellow_round"
-            android:orientation="vertical"
-            android:gravity="center">
-            <ImageView
-                android:id="@+id/image2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:background="@color/burgerking_white"
-                android:scaleType="fitXY">
-            </ImageView>
-            <TextView
-                android:id="@+id/text2"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="사이다"
-                android:textSize="18dp"
-                android:background="@drawable/yellow_round">
-            </TextView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/option3"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@drawable/yellow_round"
-            android:orientation="vertical"
-            android:gravity="center">
-            <ImageView
-                android:id="@+id/image3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:background="@color/burgerking_white"
-                android:scaleType="fitXY">
-            </ImageView>
-            <TextView
-                android:id="@+id/text3"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="환타"
-                android:textSize="18dp"
-                android:background="@drawable/yellow_round">
-            </TextView>
-
-        </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

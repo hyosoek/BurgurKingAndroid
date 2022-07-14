@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +46,7 @@ class MainPagePaymentOptionFragment:Fragment() {
         val backBtn = view.findViewById<Button>(R.id.backBtn)
         backBtn.setOnClickListener {
             val changeInterface = context as MainInterface
-            changeInterface.changeFragment(1)
+            changeInterface.changeFragment(1,null)
         }
 
         val cashPayButton = view.findViewById<Button>(R.id.cashPayBtn)
