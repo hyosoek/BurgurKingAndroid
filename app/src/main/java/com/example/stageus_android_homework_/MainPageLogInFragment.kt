@@ -159,7 +159,7 @@ class MainPageLogInFragment:Fragment() {
         val dialogView = layoutInflater.inflate(R.layout.main_emptycart_alert_dialog,null)
         val cancelBtn = dialogView.findViewById<Button>(R.id.cancelBtn)
         val warnText = dialogView.findViewById<TextView>(R.id.warnText)
-        warnText.text = "이미 있는 아이디입니다."
+        warnText.text = "이미 있거나, 불가능한 아이디입니다."
         dialog.setView(dialogView)
         cancelBtn.setOnClickListener{
             dialog.dismiss()

@@ -74,11 +74,7 @@ class InitPageActivity : AppCompatActivity() {
             intent.putExtra("category", categoryList)
             startActivity(intent)
         }
-        val showSalesButton = findViewById<Button>(R.id.salesBtn)
-        showSalesButton.setOnClickListener{
-            val intentSales = Intent(this,TotalSalesPage::class.java)
-            startActivity(intentSales)
-        }
+
     }
 
 }

@@ -51,12 +51,11 @@ data class CategoryMenuData(
 data class OrderData(
     var message: String,
     var success: Boolean,
-    var data: List<Any>//?
 )
 data class GetOrderData(
     var message: String,
     var success: Boolean,
-    var data: List<Any>//?
+    var data: List<Any>
 )
 interface RetrofitService{
     @POST("/account")
@@ -88,13 +87,13 @@ interface RetrofitService{
 
     @POST("/order")
     fun postOrder(//보내는 건 하나밖에 못 보냄
-        @Body body: HashMap<String, String>//key value로 이루어진 자료형, hashmap의 발전형이 json
+        @Body body: HashMap<String, Any>//key value로 이루어진 자료형, hashmap의 발전형이 json
     ):Call<OrderData>
 
     @GET("/order")
     fun getOrder(
         @Query("id") id: String,
-    ) : Call<CategoryMenuData>//안에 데이터 클래스
+    ) : Call<GetOrderData>//안에 데이터 클래스
 
 
 }

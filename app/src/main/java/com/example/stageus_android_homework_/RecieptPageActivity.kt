@@ -43,6 +43,11 @@ class RecieptPageActivity(): AppCompatActivity() {
             Glide.with(customView)
                 .load(cartList[i].productImage)
                 .into(customView.findViewById(R.id.symbol))
+            if (cartList[i].productURLImage !=null){
+                Glide.with(customView)
+                    .load("http://3.39.66.6:3000"+ cartList[i].productURLImage)
+                    .into(customView.findViewById(R.id.symbol))
+            }
             val text1View = customView.findViewById<TextView>(R.id.text1)
             text1View.text = cartList[i].productName
             if (cartList[i].option1 != null){

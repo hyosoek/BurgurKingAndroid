@@ -19,6 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import java.io.Serializable
 
 interface MainInterface{
     fun changeFragment(fragmentNum: Int, categoryName: String?)
@@ -53,6 +54,19 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
         val menu_name: String,
         val menu_price: Int,
         val menu_image: String
+    ) : Serializable
+
+    data class OrderData(
+        val seq: Int,
+        val id: String,
+        val total_price: Int,
+        val order_list: ArrayList<OrderCount>
+    ) : Serializable
+
+    data class OrderCount(
+        val count: Int,
+        val name : String,
+        val sum_price: Int
     )
 
     override fun changeFragment(fragmentNum: Int, categoryName: String?) {
@@ -89,16 +103,6 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
                 emptyCartDialog()
             }
         }
-        else if(fragmentNum == 9){
-            if(myService.userId == ""){
-                val fragmentTemp = MainPageLogInFragment()
-                val fragmentTemp1 = fragmentTemp//파일명을 가져와야함.
-                supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp1).commit()
-            }
-            else{
-                logOutDialog()
-            }
-        }
         else if(fragmentNum == 8){
             val fragmentTemp = MainPageServerCategoryFragment()//파일명을 가져와야함.
             retrofitHttp.getCategoryMenu(categoryName!!,"kr")//제이슨으로 받아오기에 담을 객체 바로 생성 가능
@@ -122,6 +126,42 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
                     }
                 })
 
+        }
+        else if(fragmentNum == 9){
+            if(myService.userId == ""){
+                val fragmentTemp = MainPageLogInFragment()
+                val fragmentTemp1 = fragmentTemp//파일명을 가져와야함.
+                supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp1).commit()
+            }
+            else{
+                logOutDialog()
+            }
+        }
+        else if(fragmentNum == 10)//주문 기록 확인하기
+        {
+            if(myService.userId != ""){
+                val fragmentTemp = MainPageOrderLogFragment()
+
+                retrofitHttp.getOrder(myService.userId)//제이슨으로 받아오기에 담을 객체 바로 생성 가능
+                    .enqueue(object: Callback<GetOrderData> {//enqueue가 비동기함수 + 비동기처리 됨 자동으로
+                    override fun onFailure(call: Call<GetOrderData>, t: Throwable) {}
+                        override fun onResponse(call: Call<GetOrderData>, response: Response<GetOrderData>) {
+                            if(response.body()!!.success) {
+                                Log.d("logData","${response.body()!!.data}")
+                                val gson = Gson()
+                                val myJson = gson.toJson(response.body()!!.data[response.body()!!.data.size-1])
+                                val myGsonData = gson.fromJson(myJson, OrderData::class.java)
+                                val bundle = Bundle()
+                                bundle.putSerializable("orderLog", myGsonData)
+                                fragmentTemp.arguments = bundle
+                                supportFragmentManager.beginTransaction().replace(R.id.fragmentBox, fragmentTemp).commit()
+                            }
+                        }
+                    })
+            }
+            else {
+                noLogInWarnDialog()
+            }
         }
         else {
             val fragmentTemp = MainPageCategoryFragment()//파일명을 가져와야함.
@@ -197,6 +237,21 @@ class MainPageActivity : AppCompatActivity() ,MainInterface{
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+    fun noLogInWarnDialog(){
+        val dialogtemp = AlertDialog.Builder(this)
+        val dialog = dialogtemp.create()
+        val dialogView = layoutInflater.inflate(R.layout.main_emptycart_alert_dialog,null)
+        val cancelBtn = dialogView.findViewById<Button>(R.id.cancelBtn)
+        val warnText = dialogView.findViewById<TextView>(R.id.warnText)
+        warnText.text = "로그인된 아이디가 없습니다!"
+        dialog.setView(dialogView)
+        cancelBtn.setOnClickListener{
+            dialog.dismiss()
+        }
+        dialog.show()
+
     }
 }
 

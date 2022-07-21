@@ -61,6 +61,8 @@ class MainPagePaymentOptionFragment:Fragment() {
         cardPayButton.setOnClickListener {
             val intent = Intent(context, CardPaymentPageActivity::class.java)
             intent.putExtra("priceSum",myService.priceSum)
+            intent.putExtra("cartData", myService.cartList)
+            intent.putExtra("userId", myService.userId)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
             startActivity(intent)
         }

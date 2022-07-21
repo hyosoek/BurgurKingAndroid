@@ -129,7 +129,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="20dp"/>
-
+    <Button
+        android:id="@+id/orderLogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_round"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:text="주문기록"
+        android:textSize="25dp"
+        android:layout_marginHorizontal="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"/>
 
 
 

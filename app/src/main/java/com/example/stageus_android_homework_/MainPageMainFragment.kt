@@ -1,6 +1,7 @@
 package com.example.stageus_android_homework_
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -78,6 +79,11 @@ class MainPageMainFragment:Fragment() {
         logInBtn.setOnClickListener{
             val changeInterface = context as MainInterface
             changeInterface.changeFragment(9,null)
+        }
+        val showSalesButton = view.findViewById<Button>(R.id.orderLogBtn)
+        showSalesButton.setOnClickListener{
+            val changeInterface = context as MainInterface
+            changeInterface.changeFragment(10,null)
         }
 
     }

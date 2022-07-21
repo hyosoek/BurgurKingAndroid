@@ -65,7 +65,7 @@ class MainPageServerCategoryFragment():Fragment() {
     fun createView(view: View){
         val layout = view.findViewById<LinearLayout>(R.id.parentLayout)
 
-        Log.d("sex :",":is mine${menuList}")
+        Log.d("log:",":is mine${menuList}")
         for (i in 0 until menuList.size) {
             val layoutInflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val customView = layoutInflater.inflate(R.layout.main_category_customview,layout,false)
